@@ -19,6 +19,10 @@ public class Playerscrypt : MonoBehaviour
     public Vector2 groundchecksize = new Vector2(0.5f, 0.05f);
     public LayerMask groundlayer;
 
+    [Header("prefab")]
+    [SerializeField] GameObject ball;
+
+
     void Start()
     {
         
@@ -49,6 +53,14 @@ public class Playerscrypt : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower - 3);
             }
+        }
+    }
+
+    public void Fire(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameObject balls = Instantiate(ball,transform.position , transform.rotation );
         }
     }
 
