@@ -22,12 +22,10 @@ public class Playerscrypt : MonoBehaviour
     public LayerMask groundlayer;
 
     [Header("shoot")]
-    [SerializeField] GameObject ball;
-    public float launchstr = 10f;
-    public float angle = 90;
-    private int dirangle = 0;
-    private bool powering = false;
-
+    [SerializeField] private GameObject ball;
+    private Vector2 mousePos;
+    Transform player;
+   
 
     void Start()
     {
@@ -37,20 +35,11 @@ public class Playerscrypt : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(horizontalMovment * moveSpeed, rb.velocity.y);
-        ChangeAngle();
-        ResetAngle();
-        forceup();
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovment = context.ReadValue<Vector2>().x;
-        if (Mathf.Sign(context.ReadValue<Vector2>().x) != dir && (int)context.ReadValue<Vector2>().x != 0)
-        {
-            angle = -1;
-            dir = -1;
-            dirangle *= -1;
-        }
     }
 
     public void jump(InputAction.CallbackContext context) 
@@ -68,89 +57,6 @@ public class Playerscrypt : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower - 3);
             }
-        }
-    }
-
-    public void Fire(InputAction.CallbackContext context)
-    {
-        if (context.canceled)
-        {
-            float x = Mathf.Cos((angle - 90) * dir * Mathf.PI / 180);
-            float y = Mathf.Sin((angle - 90) * Mathf.PI / 180);
-            Vector3 direction = new Vector3(x * launchstr, y * launchstr, 0);
-            Vector3 spawn = new Vector3(transform.position.x + x, transform.position.y + y, 0);
-            GameObject balls = Instantiate(ball, spawn, transform.rotation);
-            balls.GetComponent<Ball_Movement>().SetBullet((Vector3)direction);
-            powering = false;
-            launchstr = 0;
-        }
-    }
-    private void forceup()
-    {
-        if (powering)
-        {
-            launchstr += 0.1f;
-        }
-        if (launchstr > 20)
-        {
-            launchstr = 20;
-        }
-    }
-
-    private void ChangeAngle()
-    {
-        switch (dirangle)
-        {
-            case 1:
-                angle += dir;
-                break;
-            case -1:
-                angle -= dir;
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void ResetAngle()
-    {
-        switch (dir)
-        {
-            case 1:
-                if (angle < 45)
-                {
-                    angle = 45;
-                }
-                else if (angle > 135)
-                {
-                    angle = 135;
-                }
-                break;
-            case -1:
-                if (angle > -45)
-                {
-                    angle = -45;
-                }
-                else if (angle < -135)
-                {
-                    angle = -135;
-                }
-                break;
-            default:
-                print("directional error");
-                break;
-        }
-    }
-
-    public void aim(InputAction.CallbackContext Context)
-    {
-        if (Context.started)
-        {
-            dirangle += (int)(Context.ReadValue<float>()) * -dir;
-        }
-        if (Context.canceled)
-        {
-            dirangle = 0;
         }
     }
     private bool isgrounded()

@@ -2973,6 +2973,7 @@ GameObject:
   - component: {fileID: 1613089100}
   - component: {fileID: 1613089105}
   - component: {fileID: 1613089104}
+  - component: {fileID: 1613089106}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -3134,6 +3135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1613089101}
   moveSpeed: 5
+  dir: 1
   jumpPower: 10
   groundcheckpos: {fileID: 1054438673}
   groundchecksize: {x: 0.71, y: 0.05}
@@ -3184,9 +3186,9 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1613089104}
-        m_TargetAssemblyTypeName: Playerscrypt, Assembly-CSharp
-        m_MethodName: Fire
+      - m_Target: {fileID: 1613089106}
+        m_TargetAssemblyTypeName: ShootScrypt, Assembly-CSharp
+        m_MethodName: fire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3254,11 +3256,42 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 896e0f8f-3c25-4f2c-a67d-8b01360db690
     m_ActionName: Player/jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1613089106}
+        m_TargetAssemblyTypeName: ShootScrypt, Assembly-CSharp
+        m_MethodName: gatherDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c2cd955e-d669-4393-ad41-cb40d7505eec
+    m_ActionName: Player/aim[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1613089106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613089099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b32355db11ebb42abfc295002dc09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 2412842465410615427, guid: 12148e00f4640d044a5d12e95fee9548, type: 3}
+  shot: {fileID: -5138859332820583497, guid: 07db45a476460d1428dfe250528db339, type: 3}
+  mousePos2: {fileID: 5669582701461536011, guid: 07db45a476460d1428dfe250528db339, type: 3}
 --- !u!1 &1806483082
 GameObject:
   m_ObjectHideFlags: 0

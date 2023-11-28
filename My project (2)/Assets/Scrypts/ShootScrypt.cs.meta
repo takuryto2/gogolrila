@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 81b32355db11ebb42abfc295002dc09b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ball: {fileID: 2412842465410615427, guid: 12148e00f4640d044a5d12e95fee9548, type: 3}
+  - shot: {fileID: -5138859332820583497, guid: 07db45a476460d1428dfe250528db339, type: 3}
+  - mousePos2: {fileID: 5669582701461536011, guid: 07db45a476460d1428dfe250528db339, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
