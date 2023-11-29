@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class ShootScrypt : MonoBehaviour
 {
+    [Header("aim")]
     private Vector2 mousePos;
     [SerializeField] private GameObject ball;
     [SerializeField] private InputActionReference shot, mousePos2;
@@ -17,7 +18,7 @@ public class ShootScrypt : MonoBehaviour
 
     public void fire(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
+        if (ctx.canceled)
         {
             GameObject newball = Instantiate(ball, player.position, Quaternion.identity);
             newball.TryGetComponent<Rigidbody2D>(out Rigidbody2D ballbody);
