@@ -3248,11 +3248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c1092910b6cb240848052667048a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botleftwallcheckpos: {fileID: 0}
-  botleftwallchecksize: {x: 0.5, y: 0.05}
-  groundlayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1296458660
 GameObject:
   m_ObjectHideFlags: 0
